@@ -19,8 +19,8 @@ public class Configuration {
      */
     public Configuration() throws IOException {
         storage = new ArrayList<>();
-        file = null;  // Initialize to a default value or set it based on your application's logic
-        delimiter = '=';                // default value
+        file = null;                    // Default value
+        delimiter = '=';                // Default value
     }
     
     /**
@@ -41,7 +41,7 @@ public class Configuration {
      */
     public void push(Pair pair) {
         if (exists(pair)) {
-            throw new DuplicateRequestException("Pair already exists, cannot push");
+            throw new DuplicateRequestException("Pair already exists, cannot push duplicate");
         }
         storage.add(pair);
     }
@@ -174,6 +174,14 @@ public class Configuration {
             }
         }
         return null;
+    }
+    
+    /**
+     * This function allows you to update `storage`
+     * @throws IOException Thrown because of file handling
+     */
+    public void update() throws IOException {
+        read();
     }
     
     /**
