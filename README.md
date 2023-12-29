@@ -23,6 +23,21 @@ needing to use a simple `get()` method to retrieve values that you have set.
         </dependency>
    ```
 
+#### liteconfig-1.0
+Liteconfig-1.0 uses `Kotlin` for it's pair class.
+You will need to include `Kotlin` inside of your pom.xml if your project is a Java project.
+```xml
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+```
+And add this within your `<properties>`
+```xml
+        <kotlin.version>1.7.10</kotlin.version>
+```
+
 ---
 
 ### Default Java
