@@ -9,6 +9,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * woz07
+ *
+ * Configuration.java
+ * This is the class that you must initialize and use for the data
+ */
+
 public class Configuration {
     private File file;                  // The file used for reading/writing
     private char delimiter;             // The delimiter that splits up the data
