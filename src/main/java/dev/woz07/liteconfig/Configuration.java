@@ -43,6 +43,9 @@ public class Configuration {
         if (exists(pair)) {
             throw new DuplicateRequestException("Pair already exists, cannot push duplicate");
         }
+        if (pair.getKey().contains("=") || pair.getKey().contains(":") || pair.getValue().contains("=") || pair.getValue().contains(":")) {
+            throw new IllegalArgumentException("Key/Value cannot contain ':' or '='");
+        }
         storage.add(pair);
     }
     
