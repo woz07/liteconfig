@@ -95,6 +95,9 @@ public class Configuration {
      * @param newValue The new value you want
      */
     public void overrideValue(String key, String newValue) {
+        if (newValue.contains(":") || newValue.contains("=")) {
+            throw new IllegalArgumentException("Value cannot contain ':' or '='");
+        }
         for (Pair p : storage) {
             if (p.getKey().equals(key)) {
                 p.setValue(newValue);
@@ -110,6 +113,9 @@ public class Configuration {
      * @param newKey The new key you want instead
      */
     public void overrideKey(String oldKey, String newKey) {
+        if (newKey.contains(":") || newKey.contains("=")) {
+            throw new IllegalArgumentException("Key cannot contain ':' or '='");
+        }
         for (Pair p : storage) {
             if (p.getKey().equals(oldKey)) {
                 p.setKey(newKey);
