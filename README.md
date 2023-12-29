@@ -123,3 +123,6 @@ public class Main {
     }
 }
 ```
+
+There are a lot of other cool methods that have been provided for use within `Configuration.java`, please do 
+make sure to check them out and if you encounter any issues please do let me know so I can fix them. Thanks.
