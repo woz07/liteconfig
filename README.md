@@ -1,5 +1,3 @@
-# NOTE: UNDER HEAVY DEVELOPMENT STILL
-
 # liteconfig
 Light weight configuration management system in Java and Kotlin
 
