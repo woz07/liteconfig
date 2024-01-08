@@ -13,13 +13,10 @@ import java.util.List;
  */
 
 public class Configuration {
-    private final File target;
+    private File target;
     private final char delimiter = '=';
     public Configuration(File target) {
-        if (target == null) {
-            throw new IllegalArgumentException("File cannot be null");
-        }
-        this.target = target;
+        setTarget(target);
     }
     
     /**
@@ -85,8 +82,8 @@ public class Configuration {
     
     /**
      * Update a key from current to a new key
-     * @param old The old key that is within the file
-     * @param replacement The new key you want the old key replaced with
+     * @param old           The old key that is within the file
+     * @param replacement   The old keys replacement
      */
     public synchronized void updateKey(final String old, final String replacement) {
         List<String> storage = new ArrayList<>();
@@ -111,8 +108,8 @@ public class Configuration {
     
     /**
      * Update a value from current to a new value
-     * @param key The key to access the value
-     * @param replacement The value to get the key from
+     * @param key           The key associated to the old value
+     * @param replacement   The old values replacement
      */
     public synchronized void updateValue(final String key, final String replacement) {
         List<String> storage = new ArrayList<>();
@@ -133,10 +130,40 @@ public class Configuration {
         // Write out all the contents of storage to file
         write(storage);
     }
-    
+
+    /**
+     * Clear data within file
+     */
+    public synchronized void clear() {
+        try (FileWriter writer = new FileWriter(target)) {
+            writer.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Get method for target
+     * @return  `target`
+     */
+    public synchronized File getTarget() {
+        return target;
+    }
+
+    /**
+     * Set method for target
+     * @param file  The new target file you want
+     */
+    public synchronized void setTarget(File file) {
+        if (file == null) {
+            throw new IllegalArgumentException("File cannot be null");
+        }
+        target = file;
+    }
+
     /**
      * Private method to write data to file (no appending)
-     * @param source Everything within source gets written out
+     * @param source    Everything within source gets written out
      */
     private synchronized void write(List<String> source) {
         try (FileWriter writer = new FileWriter(target)) {
