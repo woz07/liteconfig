@@ -1,5 +1,5 @@
 # liteconfig
-Light weight configuration management system in Java and Kotlin
+Light weight configuration management system in Java
 
 > Liteconfig uses java 11
 
