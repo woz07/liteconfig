@@ -107,6 +107,8 @@ public class Main {
 }
 ```
 
+> If a key doesn't exist then this method will return null
+
 ### updateKey
 
 If you want to update a key you can update it via this method.
